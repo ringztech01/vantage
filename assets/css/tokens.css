@@ -1,0 +1,61 @@
+/* VIEL Design Tokens v1.0 — light theme */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap');
+
+:root {
+  /* Brand — Navy (base 800 = PDF cover) */
+  --navy-50:#EEF2F8; --navy-100:#D6DFEC; --navy-200:#AEBFD8; --navy-300:#7F97BD; --navy-400:#4F6F9E;
+  --navy-500:#2C4F80; --navy-600:#1C5180; --navy-700:#133A66; --navy-800:#0D2B4F; --navy-900:#081B33;
+  /* Brand — Green (base 500 = Company Profile) */
+  --green-50:#F4F9EC; --green-100:#E5F1D2; --green-200:#CCE3A6; --green-300:#B0D275; --green-400:#9CC553;
+  --green-500:#8AB83F; --green-600:#6F9A2E; --green-700:#557825; --green-800:#3E581C; --green-900:#283912;
+  /* Neutrals — cool slate */
+  --gray-0:#FFFFFF; --gray-50:#F5F7FA; --gray-100:#EBEEF3; --gray-200:#DCE1E8; --gray-300:#C3CAD5;
+  --gray-400:#98A2B3; --gray-500:#6B7587; --gray-600:#4D5667; --gray-700:#363E4C; --gray-800:#222935; --gray-900:#121720;
+
+  /* Roles */
+  --bg-page:var(--gray-0); --bg-subtle:var(--gray-50); --bg-muted:var(--gray-100); --bg-inverse:var(--navy-800);
+  --border:var(--gray-200); --border-strong:var(--gray-300);
+  --text-strong:var(--navy-800); --text-body:var(--gray-700); --text-muted:var(--gray-500);
+  --text-inverse:#FFFFFF; --text-inverse-muted:var(--navy-200);
+  --accent:var(--green-500); --accent-ink:var(--green-700); /* green text on white must use accent-ink (5.4:1) */
+  --focus-ring:0 0 0 3px rgba(138,184,63,.45);
+
+  /* Semantic — project status */
+  --status-completed-fg:#1E6B45; --status-completed-bg:#E6F4EC; --status-completed-bd:#B7DFC8; --status-completed-dot:#2E9B63;
+  --status-ongoing-fg:#1B55A3;   --status-ongoing-bg:#E7F0FB;   --status-ongoing-bd:#BCD3F2;   --status-ongoing-dot:#2F74D0;
+  --status-awarded-fg:#5B3AA8;   --status-awarded-bg:#F1ECFB;   --status-awarded-bd:#D6C8F3;   --status-awarded-dot:#7C5CD6;
+  /* Semantic — tags */
+  --tag-country-fg:var(--gray-700); --tag-country-bg:#FFFFFF; --tag-country-bd:var(--gray-300); --tag-country-code:var(--navy-600);
+  --tag-year-fg:var(--navy-700); --tag-year-bg:var(--navy-50);
+  /* Semantic — feedback */
+  --danger:#B8322A; --danger-bg:#FBECEA; --success:var(--status-completed-fg);
+
+  /* Type */
+  --font-display:'Plus Jakarta Sans', system-ui, sans-serif;
+  --font-body:'Inter', system-ui, sans-serif;
+  --font-mono:'JetBrains Mono', ui-monospace, monospace;
+  --text-display:56px/64px; --text-title:40px/48px; --text-section:24px/32px; --text-subsection:20px/28px;
+  --text-card:16px/24px; --text-lead:18px/28px; --text-body:15px/24px; --text-data:13px/20px;
+  --text-label:12px/16px; --text-caption:12px/16px;
+  --tracking-display:-0.02em; --tracking-title:-0.015em; --tracking-label:0.08em;
+
+  /* Spacing — 8px grid (1 unit = 8px) */
+  --space-0:0; --space-0-5:4px; --space-1:8px; --space-1-5:12px; --space-2:16px; --space-3:24px; --space-4:32px;
+  --space-5:40px; --space-6:48px; --space-8:64px; --space-10:80px; --space-12:96px; --space-16:128px;
+
+  /* Radius */
+  --radius-none:0; --radius-sm:4px; --radius-md:8px; --radius-lg:12px; --radius-full:9999px;
+
+  /* Shadow (navy-tinted) */
+  --shadow-xs:0 1px 2px rgba(10,34,64,.06);
+  --shadow-sm:0 1px 3px rgba(10,34,64,.08), 0 1px 2px rgba(10,34,64,.04);
+  --shadow-md:0 4px 12px -2px rgba(10,34,64,.10), 0 2px 4px rgba(10,34,64,.04);
+  --shadow-lg:0 12px 32px -8px rgba(10,34,64,.16), 0 4px 8px rgba(10,34,64,.04);
+  --shadow-xl:0 24px 64px -16px rgba(10,34,64,.24);
+
+  /* Layout */
+  --container:1280px; --gutter:24px; --margin-desktop:32px; --margin-mobile:20px;
+  --header-h:72px; --utility-h:36px; --section-y:96px; --section-y-mobile:64px;
+  --row-h:44px; --row-h-compact:36px;
+  --z-header:50; --z-dropdown:60; --z-modal:100;
+}

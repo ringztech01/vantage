@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>VIEL Footprint Map</title>
+<script src="https://unpkg.com/d3@7.9.0/dist/d3.min.js" integrity="sha384-CjloA8y00+1SDAUkjs099PVfnY2KmDC2BZnws9kh8D/lX1s46w6EPhpXdqMfjK6i" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/topojson-client@3.1.0/dist/topojson-client.min.js" integrity="sha384-Ukv1p/xTma6P4/2bY5KzWBw+ydSpXmhCMtyciIQVDJ1RmOxtCYNMF1uXT9T63H67" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@500&display=swap">
+<style>
+html,body{margin:0;height:100%;background:transparent;overflow:hidden;font-family:Inter,sans-serif}
+svg{width:100%;height:100%;display:block}
+.land{fill:#575B5C;stroke:#FFFFFF;stroke-width:.6;transition:fill .25s}
+.land.hl{fill:#8AB83F;cursor:pointer}
+.land.hl.dim{fill:#B7CF8C}
+.land.hl.on{fill:#6F9A2E}
+.ring{fill:none;stroke:#8AB83F;stroke-width:1.5;opacity:0}
+.dot{fill:#FFFFFF;stroke:#0D2B4F;stroke-width:1.5}
+.lbl rect{fill:#0D2B4F}
+.lbl text{fill:#FFFFFF;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;font-size:11px;letter-spacing:.04em}
+.lbl{transition:opacity .25s;cursor:pointer}
+.lbl.dim{opacity:.35}
+.lead{stroke:#0D2B4F;stroke-width:1}
+</style>
+</head>
+<body>
+<svg id="map" role="img" aria-label="World map highlighting VIEL's countries of operation"></svg>
+<script>
+const COUNTRIES = [
+  { id: '566', code: 'NG', name: 'Nigeria', dx: -10, dy: 44 },
+  { id: '430', code: 'LR', name: 'Liberia', dx: -70, dy: 30 },
+  { id: '728', code: 'SS', name: 'South Sudan', dx: 30, dy: 44 },
+  { id: '682', code: 'SA', name: 'KSA', dx: 60, dy: 30 },
+  { id: '368', code: 'IQ', name: 'Iraq', dx: 60, dy: -34 },
+  { id: '422', code: 'LB', name: 'Lebanon', dx: -70, dy: -34 },
+  { id: '710', code: 'ZA', name: 'South Africa', dx: 70, dy: 20 },
+];
+const byId = Object.fromEntries(COUNTRIES.map(c => [c.id, c]));
+const W = 1200, H = 620;
+const svg = d3.select('#map').attr('viewBox', `0 0 ${W} ${H}`).attr('preserveAspectRatio', 'xMidYMid meet');
+let active = null;
+
+fetch('https://cdn.jsdelivr.net/npm/world-atlas@2.0.2/countries-110m.json').then(r => r.json()).then(topo => {
+  const all = topojson.feature(topo, topo.objects.countries).features.filter(f => f.id !== '010');
+  const proj = d3.geoNaturalEarth1().fitExtent([[10, 10], [W - 10, H - 10]], { type: 'FeatureCollection', features: all });
+  const path = d3.geoPath(proj);
+  const g = svg.append('g');
+  g.selectAll('path').data(all).join('path')
+    .attr('d', path)
+    .attr('class', d => 'land' + (byId[d.id] ? ' hl' : ''))
+    .attr('data-id', d => d.id)
+    .on('mouseenter', (e, d) => byId[d.id] && setActive(byId[d.id].code, true))
+    .on('mouseleave', (e, d) => byId[d.id] && setActive(null, true));
+
+  const mk = svg.append('g');
+  COUNTRIES.forEach(c => {
+    const f = all.find(x => x.id === c.id); if (!f) return;
+    const [x, y] = c.code === 'SA' ? proj([45, 24]) : c.code === 'IQ' ? proj([43.7, 33.2]) : path.centroid(f);
+    c.el = mk.append('g').attr('class', 'lbl').attr('data-code', c.code)
+      .on('mouseenter', () => setActive(c.code, true)).on('mouseleave', () => setActive(null, true));
+    c.el.append('line').attr('class', 'lead').attr('x1', x).attr('y1', y).attr('x2', x + c.dx).attr('y2', y + c.dy);
+    c.ring = c.el.append('circle').attr('class', 'ring').attr('cx', x).attr('cy', y).attr('r', 6);
+    c.el.append('circle').attr('class', 'dot').attr('cx', x).attr('cy', y).attr('r', 4);
+    const t = c.el.append('text').text(c.name.toUpperCase());
+    const w = t.node().getComputedTextLength() + 20;
+    const lx = x + c.dx - (c.dx < 0 ? w : 0), ly = y + c.dy - 12;
+    c.el.insert('rect', 'text').attr('x', lx).attr('y', ly).attr('width', w).attr('height', 24).attr('rx', 3);
+    t.attr('x', lx + 10).attr('y', ly + 16);
+  });
+
+  const pulse = () => {
+    COUNTRIES.forEach((c, i) => c.ring && c.ring.attr('r', 6).attr('opacity', 0.9)
+      .transition().delay(i * 180).duration(1800).ease(d3.easeCubicOut).attr('r', 22).attr('opacity', 0));
+  };
+  pulse(); setInterval(pulse, 3200);
+});
+
+function setActive(code, fromMap) {
+  active = code;
+  d3.selectAll('.land.hl').classed('on', function () { return code && byId[this.dataset.id].code === code; })
+    .classed('dim', function () { return code && byId[this.dataset.id].code !== code; });
+  d3.selectAll('.lbl').classed('dim', function () { return code && this.dataset.code !== code; });
+  if (fromMap) parent.postMessage({ type: 'viel-map-hover', code }, '*');
+}
+window.addEventListener('message', e => { if (e.data && e.data.type === 'viel-map-set') setActive(e.data.code, false); });
+</script>
+</body>
+</html>
