@@ -9,8 +9,8 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Vantage Infrastructure and Energy Ltd">
 <meta property="og:description" content="Engineering, Procurement and Construction across infrastructure and energy.">
-<meta property="og:image" content="assets/images/hero/vantage-highway-road-construction-hero.webp">
-<link rel="preload" as="image" href="assets/images/hero/vantage-highway-road-construction-hero.webp">
+<meta property="og:image" content="assets/images/hero/vantage-roads-highway-golden-hour-hero.webp">
+<link rel="preload" as="image" href="assets/images/hero/vantage-roads-highway-golden-hour-hero.webp">
 <script src="assets/js/support.js"></script>
 </head>
 <body>
@@ -24,6 +24,8 @@ body{margin:0;background:#FFFFFF;color:#363E4C;font-family:Inter,system-ui,sans-
 a{color:#0D2B4F;text-decoration:none}
 a:hover{color:#557825}
 html{scroll-behavior:smooth}
+@keyframes viel-pop{from{opacity:0;transform:scale(.6)}to{opacity:1;transform:scale(1)}}
+@keyframes viel-fade{from{opacity:0}to{opacity:1}}
 @keyframes viel-fill-a{from{width:0}to{width:100%}}
 @keyframes viel-fill-b{from{width:0}to{width:100%}}
 [data-rv]{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.7,.2,1) var(--rv-d,0ms), transform .9s cubic-bezier(.2,.7,.2,1) var(--rv-d,0ms), border-color .15s, box-shadow .15s, background .15s !important}
@@ -31,7 +33,6 @@ html{scroll-behavior:smooth}
 [data-rv="in"]{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){[data-rv]{opacity:1 !important;transform:none !important;transition:none !important}}
 </style>
-<script src="assets/js/image-slot.js"></script>
 <link rel="icon" type="image/png" href="assets/images/brand/vantage-infrastructure-energy-mark.webp">
 </helmet>
 
@@ -100,7 +101,7 @@ html{scroll-behavior:smooth}
       <div style="border-right:1px solid #DCE1E8;padding-right:32px;display:flex;flex-direction:column;gap:8px">
         <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#557825">What We Do</span>
         <span style="font-family:'Plus Jakarta Sans';font-weight:700;font-size:24px;line-height:32px;color:#0D2B4F">11 sectors</span>
-        <a href="index.html#sectors" style="margin-top:16px;align-self:flex-start;height:40px;padding:0 16px;display:flex;white-space:nowrap;align-items:center;border:1px solid #0D2B4F;border-radius:4px;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:#0D2B4F" style-hover="background:#0D2B4F;color:#FFFFFF">All sectors →</a>
+        <a href="sectors.html" style="margin-top:16px;align-self:flex-start;height:40px;padding:0 16px;display:flex;white-space:nowrap;align-items:center;border:1px solid #0D2B4F;border-radius:4px;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:#0D2B4F" style-hover="background:#0D2B4F;color:#FFFFFF">All sectors →</a>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 24px">
         <sc-for list="{{ sectors }}" as="s" hint-placeholder-count="11">
@@ -119,7 +120,7 @@ html{scroll-behavior:smooth}
   <section data-screen-label="Hero" style="position:relative;height:calc(100vh - 108px);min-height:640px;max-height:960px;background:#081B33;overflow:hidden">
     <sc-for list="{{ slides }}" as="sl" hint-placeholder-count="4">
       <div style="position:absolute;inset:0;opacity:{{ sl.opacity }};transition:opacity 900ms ease;pointer-events:{{ sl.pe }}">
-        <image-slot id="{{ sl.slot }}" shape="rect" src="{{ sl.src }}" placeholder="{{ sl.ph }}"></image-slot>
+        <img src="{{ sl.src }}" alt="{{ sl.ph }}" style="width:100%;height:100%;object-fit:cover;display:block">
       </div>
     </sc-for>
     <div style="position:absolute;inset:0;pointer-events:none;background:rgba(8,27,51,.68)"></div>
@@ -171,60 +172,59 @@ html{scroll-behavior:smooth}
         <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#557825">What We Do</span>
         <h2 style="margin:0;font-family:'Plus Jakarta Sans';font-weight:700;font-size:clamp(28px, 4vw, 40px);line-height:1.2;letter-spacing:-0.015em;color:#0D2B4F">11 sectors, one EPC partner</h2>
       </div>
-      <a href="#sectors" style="white-space:nowrap;font-family:'Plus Jakarta Sans';font-weight:600;font-size:15px;color:#0D2B4F;border-bottom:2px solid #8AB83F;padding-bottom:4px">All sectors →</a>
+      <a href="sectors.html" style="white-space:nowrap;font-family:'Plus Jakarta Sans';font-weight:600;font-size:15px;color:#0D2B4F;border-bottom:2px solid #8AB83F;padding-bottom:4px">See all 11 sectors →</a>
     </div>
-    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,280px),1fr));gap:24px">
-      <sc-for list="{{ sectors }}" as="s" hint-placeholder-count="11">
-        <a href="{{ s.href }}" style="min-height:200px;padding:32px;background:#FFFFFF;border:1px solid #DCE1E8;border-radius:8px;display:flex;flex-direction:column;gap:16px;transition:border-color .15s, box-shadow .15s" style-hover="border-color:#8AB83F;box-shadow:0 4px 12px -2px rgba(10,34,64,.10), 0 2px 4px rgba(10,34,64,.04)">
-          <div style="display:flex;justify-content:space-between;align-items:flex-start">
-            <span style="width:64px;height:64px;border-radius:8px;background:#F4F9EC;display:grid;place-items:center"><img src="{{ s.icon }}" alt="" style="width:40px;height:40px;object-fit:contain"></span>
-            <span style="font-family:'JetBrains Mono';font-size:12px;color:#98A2B3">{{ s.n }}</span>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:24px">
+      <sc-for list="{{ homeSectors }}" as="s" hint-placeholder-count="5">
+        <a href="{{ s.href }}" style="position:relative;isolation:isolate;min-height:340px;padding:28px;border-radius:12px;overflow:hidden;background:#0D2B4F;display:flex;flex-direction:column;justify-content:space-between;gap:24px;box-shadow:0 1px 2px rgba(10,34,64,.06);transition:box-shadow .3s, transform .3s" style-hover="box-shadow:0 24px 48px -16px rgba(13,43,79,.45);transform:translateY(-4px)">
+          <img src="{{ s.img }}" alt="" loading="lazy" style="position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.08)">
+          <div style="position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg, rgba(8,27,51,.25) 0%, rgba(8,27,51,.55) 45%, rgba(8,27,51,.94) 100%)"></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none">
+            <span style="width:56px;height:56px;border-radius:8px;background:rgba(255,255,255,.94);display:grid;place-items:center"><img src="{{ s.icon }}" alt="" style="width:34px;height:34px;object-fit:contain"></span>
+            <span style="font-family:'JetBrains Mono';font-size:12px;color:#D6DFEC">{{ s.n }}</span>
           </div>
-          <span style="font-family:'Plus Jakarta Sans';font-weight:600;font-size:18px;line-height:26px;color:#0D2B4F;text-wrap:balance">{{ s.name }}</span>
-          <span style="margin-top:auto;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:#557825">Explore →</span>
+          <div style="display:flex;flex-direction:column;gap:12px;pointer-events:none">
+            <span style="font-family:'Plus Jakarta Sans';font-weight:700;font-size:22px;line-height:28px;color:#FFFFFF;text-wrap:balance">{{ s.name }}</span>
+            <span style="font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:#B0D275">Explore →</span>
+          </div>
         </a>
       </sc-for>
-      <a href="#sectors" style="min-height:200px;padding:32px;background:#0D2B4F;border-radius:8px;display:flex;flex-direction:column;justify-content:space-between;gap:16px" style-hover="background:#133A66">
-        <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B0D275">Services hub</span>
-        <span style="font-family:'Plus Jakarta Sans';font-weight:700;font-size:24px;line-height:32px;color:#FFFFFF">See all 11 sectors →</span>
+      <a href="sectors.html" style="position:relative;min-height:340px;padding:28px;border-radius:12px;overflow:hidden;background:#0D2B4F;display:flex;flex-direction:column;justify-content:space-between;gap:24px;transition:background .3s, transform .3s" style-hover="background:#133A66;transform:translateY(-4px)">
+        <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B0D275">What We Do</span>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <span style="font-family:'Plus Jakarta Sans';font-weight:700;font-size:28px;line-height:36px;color:#FFFFFF;text-wrap:balance">See all 11 sectors</span>
+          <span style="width:48px;height:48px;border-radius:50%;background:#8AB83F;color:#081B33;display:grid;place-items:center;font-size:20px">→</span>
+        </div>
       </a>
     </div>
   </section>
 
-  <section data-screen-label="Gallery" ref="{{ storyRef }}" style="position:relative;height:{{ storyTotal }};background:#081B33">
-    <div style="position:sticky;top:72px;height:calc(100vh - 72px);min-height:560px;overflow:hidden">
-      <sc-for list="{{ story }}" as="c" hint-placeholder-count="5">
-        <div style="position:absolute;inset:0;opacity:{{ c.op }};transition:opacity 1s ease">
-          <img data-story-img="{{ $index }}" src="{{ c.src }}" alt="{{ c.title }}" draggable="false" style="position:absolute;inset:-4%;width:108%;height:108%;object-fit:cover;display:block;will-change:transform">
-        </div>
-      </sc-for>
-      <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg, rgba(8,27,51,.88) 0%, rgba(8,27,51,.55) 45%, rgba(8,27,51,.1) 100%)"></div>
-      <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(0deg, rgba(8,27,51,.7) 0%, rgba(8,27,51,0) 40%)"></div>
-      <div style="position:relative;max-width:1280px;height:100%;margin:0 auto;padding:clamp(40px, 6vw, 64px) clamp(20px, 4vw, 32px) 72px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:48px">
-        <div style="display:flex;flex-direction:column;justify-content:space-between;gap:32px;min-width:0">
-          <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B0D275;display:flex;align-items:center;gap:12px"><span style="width:32px;height:2px;background:#8AB83F"></span>Our Work</span>
-          <div style="position:relative;min-height:min(300px, 50vh)">
-            <sc-for list="{{ story }}" as="c" hint-placeholder-count="5">
-              <div style="position:absolute;left:0;right:0;bottom:0;display:flex;flex-direction:column;gap:20px;max-width:680px;opacity:{{ c.op }};transform:translateY({{ c.ty }});transition:opacity .7s ease, transform .9s cubic-bezier(.2,.7,.2,1);pointer-events:none">
-                <span style="font-family:'JetBrains Mono';font-size:14px;color:#B0D275;display:flex;align-items:center;gap:12px">{{ c.n }} / 05 <span style="width:32px;height:2px;background:#8AB83F"></span> {{ c.chapter }}</span>
-                <h2 style="margin:0;font-family:'Plus Jakarta Sans';font-weight:800;font-size:clamp(36px, 6vw, 64px);line-height:1.1;letter-spacing:-0.025em;color:#FFFFFF;text-wrap:balance">{{ c.title }}</h2>
-                <p style="margin:0;max-width:540px;font-size:19px;line-height:30px;font-weight:500;color:#EEF3F9;text-wrap:pretty">{{ c.desc }}</p>
-              </div>
-            </sc-for>
-          </div>
-        </div>
-        <nav aria-label="Chapters" style="align-self:center;display:{{ storyNav }};flex-direction:column;gap:4px">
-          <sc-for list="{{ story }}" as="c" hint-placeholder-count="5">
-            <button onClick="{{ c.jump }}" style="display:flex;align-items:center;justify-content:flex-end;gap:16px;height:48px;padding:0 4px;border:0;background:transparent;cursor:pointer">
-              <span style="font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:{{ c.lblC }};transition:color .3s">{{ c.chapter }}</span>
-              <span style="font-family:'JetBrains Mono';font-size:12px;color:{{ c.numC }};transition:color .3s">{{ c.n }}</span>
-              <span style="width:{{ c.tick }};height:2px;background:{{ c.tickC }};transition:width .4s, background .3s"></span>
-            </button>
-          </sc-for>
-        </nav>
+  <section data-screen-label="Gallery" style="background:#081B33;padding:96px 0;display:flex;flex-direction:column;gap:24px;overflow:hidden">
+    <div style="max-width:1280px;width:100%;margin:0 auto 24px;padding:0 clamp(20px, 4vw, 32px);display:flex;flex-direction:column;gap:12px">
+      <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B0D275">Our Projects</span>
+      <h2 style="margin:0;font-family:'Plus Jakarta Sans';font-weight:700;font-size:clamp(28px, 4vw, 40px);line-height:1.2;letter-spacing:-0.015em;color:#FFFFFF">Landmark projects across six countries</h2>
+    </div>
+    <div onMouseEnter="{{ pauseTop }}" onMouseLeave="{{ playTop }}" style="position:relative;overflow:hidden;padding:48px 0;margin:-40px 0">
+      <div ref="{{ topRef }}" style="display:flex;gap:24px;width:max-content;cursor:grab;will-change:transform;user-select:none">
+        <sc-for list="{{ rowTop }}" as="g" hint-placeholder-count="6">
+          <button onClick="{{ g.open }}" aria-label="Open photo" style="position:relative;z-index:1;flex:none;width:clamp(260px, 36vw, 480px);aspect-ratio:3/2;padding:0;border:0;border-radius:8px;overflow:hidden;background:#133A66;cursor:pointer;display:block;transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s" style-hover="transform:scale(1.18);z-index:5;box-shadow:0 30px 60px -12px rgba(0,0,0,.7), 0 0 0 2px #8AB83F">
+            <img src="{{ g.src }}" alt="" draggable="false" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none">
+          </button>
+        </sc-for>
       </div>
-      <div style="position:absolute;left:0;right:0;bottom:0;height:3px;background:rgba(255,255,255,.12)"><div ref="{{ storyBar }}" style="height:100%;width:0;background:#8AB83F"></div></div>
-      <span style="position:absolute;right:32px;bottom:24px;font-family:'JetBrains Mono';font-size:12px;color:#AEBFD8;opacity:{{ storyHint }};transition:opacity .4s">Scroll ↓</span>
+      <button onClick="{{ prevTop }}" aria-label="Previous" style="position:absolute;top:50%;left:24px;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:0;background:#FFFFFF;color:#0D2B4F;font-size:20px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:{{ visTop }};transition:opacity .3s">←</button>
+      <button onClick="{{ nextTop }}" aria-label="Next" style="position:absolute;top:50%;right:24px;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:0;background:#FFFFFF;color:#0D2B4F;font-size:20px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:{{ visTop }};transition:opacity .3s">→</button>
+    </div>
+    <div onMouseEnter="{{ pauseBot }}" onMouseLeave="{{ playBot }}" style="position:relative;overflow:hidden;padding:48px 0;margin:-40px 0">
+      <div ref="{{ botRef }}" style="display:flex;gap:24px;width:max-content;cursor:grab;will-change:transform;user-select:none">
+        <sc-for list="{{ rowBottom }}" as="g" hint-placeholder-count="6">
+          <button onClick="{{ g.open }}" aria-label="Open photo" style="position:relative;z-index:1;flex:none;width:clamp(260px, 36vw, 480px);aspect-ratio:3/2;padding:0;border:0;border-radius:8px;overflow:hidden;background:#133A66;cursor:pointer;display:block;transition:transform .35s cubic-bezier(.2,.7,.2,1), box-shadow .35s" style-hover="transform:scale(1.18);z-index:5;box-shadow:0 30px 60px -12px rgba(0,0,0,.7), 0 0 0 2px #8AB83F">
+            <img src="{{ g.src }}" alt="" draggable="false" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block;pointer-events:none">
+          </button>
+        </sc-for>
+      </div>
+      <button onClick="{{ prevBot }}" aria-label="Previous" style="position:absolute;top:50%;left:24px;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:0;background:#FFFFFF;color:#0D2B4F;font-size:20px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:{{ visBot }};transition:opacity .3s">←</button>
+      <button onClick="{{ nextBot }}" aria-label="Next" style="position:absolute;top:50%;right:24px;transform:translateY(-50%);width:52px;height:52px;border-radius:50%;border:0;background:#FFFFFF;color:#0D2B4F;font-size:20px;cursor:pointer;box-shadow:0 8px 24px rgba(0,0,0,.25);opacity:{{ visBot }};transition:opacity .3s">→</button>
     </div>
   </section>
 
@@ -333,7 +333,7 @@ html{scroll-behavior:smooth}
       <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9CC553">Sectors</span>
       <div style="display:flex;flex-direction:column;gap:10px">
         <sc-for list="{{ knownSectors }}" as="s" hint-placeholder-count="5"><a href="{{ s.href }}" style="color:#D6DFEC" style-hover="color:#FFFFFF">{{ s.name }}</a></sc-for>
-        <a href="index.html#sectors" style="color:#B0D275;font-weight:500" style-hover="color:#CCE3A6">All 11 sectors →</a>
+        <a href="sectors.html" style="color:#B0D275;font-weight:500" style-hover="color:#CCE3A6">All 11 sectors →</a>
       </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:16px">
@@ -357,8 +357,8 @@ html{scroll-behavior:smooth}
   </div>
 </footer>
   <sc-if value="{{ lbOpen }}" hint-placeholder-val="{{ false }}">
-  <div onClick="{{ lbClose }}" role="dialog" aria-modal="true" aria-label="Photo" style="position:fixed;inset:0;z-index:100;background:rgba(8,27,51,.94);display:flex;align-items:center;justify-content:center;padding:80px 120px">
-    <img onClick="{{ stop }}" src="{{ lbSrc }}" alt="" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;box-shadow:0 40px 100px -20px rgba(0,0,0,.6);display:block">
+  <div onClick="{{ lbClose }}" role="dialog" aria-modal="true" aria-label="Photo" style="position:fixed;inset:0;z-index:100;background:rgba(8,27,51,.94);animation:viel-fade .3s ease;display:flex;align-items:center;justify-content:center;padding:80px 120px">
+    <img onClick="{{ stop }}" src="{{ lbSrc }}" alt="" style="max-width:100%;max-height:100%;object-fit:contain;border-radius:8px;box-shadow:0 40px 100px -20px rgba(0,0,0,.6);display:block;animation:viel-pop .45s cubic-bezier(.2,.8,.2,1)">
     <div style="position:absolute;top:24px;left:32px;right:32px;display:flex;justify-content:space-between;align-items:center">
       <span style="font-family:'JetBrains Mono';font-size:13px;color:#B0D275">{{ lbCount }}</span>
       <button onClick="{{ lbClose }}" aria-label="Close" style="width:48px;height:48px;border:1px solid rgba(255,255,255,.3);border-radius:4px;background:transparent;color:#FFFFFF;font-size:20px;cursor:pointer" style-hover="background:#FFFFFF;color:#0D2B4F">✕</button>
@@ -439,7 +439,7 @@ class Component extends DCLogic {
   componentWillUnmount() { window.removeEventListener('resize', this.onResize); clearTimeout(this.t); cancelAnimationFrame(this.raf); this.io && this.io.disconnect(); if (this.bg) { this.bg.c.remove(); this.bg = null; } window.removeEventListener('pointermove', this.onMove); window.removeEventListener('message', this.onMsg); window.removeEventListener('keydown', this.onKey); clearTimeout(this.cvT); }
   track = React.createRef();
   mapRef = React.createRef();
-  gallery = ["assets/images/projects/vantage-project-01-aerial-estate-road-network.webp","assets/images/projects/vantage-project-02-road-construction-equipment-yard.webp","assets/images/projects/vantage-project-03-asphalt-road-paving-compactor.webp","assets/images/projects/vantage-project-04-dual-carriageway-highway.webp","assets/images/projects/vantage-project-05-commercial-bank-building-facade.webp","assets/images/projects/vantage-project-06-industrial-grain-silos-facility.webp","assets/images/projects/vantage-project-07-school-building-courtyard.webp","assets/images/projects/vantage-project-08-glass-walkway-building-interior.webp","assets/images/projects/vantage-project-09-bank-interior-fit-out.webp","assets/images/projects/vantage-project-10-spiral-staircase-commercial-fit-out.webp","assets/images/projects/vantage-project-11-high-rise-commercial-buildings.webp","assets/images/projects/vantage-project-12-concrete-bridge-infrastructure.webp","assets/images/projects/vantage-project-13-urban-road-drainage-construction.webp","assets/images/projects/vantage-project-14-dam-water-infrastructure-aerial.webp","assets/images/projects/vantage-project-15-utility-scale-solar-farm.webp","assets/images/projects/vantage-project-16-building-construction-site-aerial.webp","assets/images/projects/vantage-project-17-airport-terminal-aerial.webp","assets/images/projects/vantage-project-18-solar-mini-grid-aerial.webp","assets/images/projects/vantage-project-19-roundabout-road-construction-aerial.webp","assets/images/projects/vantage-project-20-building-foundation-construction-site.webp","assets/images/projects/vantage-project-21-rural-road-aerial-view.webp","assets/images/projects/vantage-project-22-road-construction-equipment-fleet.webp","assets/images/projects/vantage-project-23-urban-building-concrete-works-aerial.webp","assets/images/projects/vantage-project-24-bridge-girder-installation-cranes.webp","assets/images/projects/vantage-project-25-solar-wind-renewable-energy.webp","assets/images/projects/vantage-project-26-hydropower-dam-site-clearing.webp","assets/images/projects/vantage-project-27-solar-mini-grid-campus-aerial.webp","assets/images/projects/vantage-project-28-electrical-substation-switchyard.webp","assets/images/projects/vantage-project-29-solar-farm-aerial-top-view.webp","assets/images/projects/vantage-project-30-solar-hybrid-power-plant-construction.webp","assets/images/projects/vantage-project-31-power-transformer-substation.webp","assets/images/projects/vantage-project-32-solar-hybrid-power-plant-aerial.webp","assets/images/projects/vantage-project-33-drainage-channel-construction-aerial.webp","assets/images/projects/vantage-project-34-industrial-processing-plant-aerial.webp","assets/images/projects/vantage-project-35-urban-road-construction-aerial.webp","assets/images/projects/vantage-project-36-community-solar-farm-aerial.webp","assets/images/projects/vantage-project-37-utility-scale-solar-panel-rows.webp","assets/images/projects/vantage-project-38-solar-farm-under-construction-aerial.webp"];
+  gallery = ["assets/images/gallery/vantage-work-01-roads-highway-interchange-aerial.webp","assets/images/gallery/vantage-work-02-power-rural-solar-mini-grid.webp","assets/images/sectors/oil-gas/oil-gas-hero-processing-facility-dusk.webp","assets/images/gallery/vantage-work-03-buildings-high-rise-construction.webp","assets/images/gallery/vantage-work-04-bridges-girder-installation-river.webp","assets/images/sectors/fit-outs/fit-outs-hero-corporate-lobby.webp","assets/images/gallery/vantage-work-05-power-utility-solar-farm-aerial.webp","assets/images/gallery/vantage-work-06-airports-terminal-roof-construction.webp","assets/images/sectors/mechanical/mechanical-hero-rooftop-hvac-chillers.webp","assets/images/gallery/vantage-work-07-water-dam-spillway-aerial.webp","assets/images/gallery/vantage-work-08-roads-asphalt-paving.webp","assets/images/sectors/oil-gas/oil-gas-pipeline-welding.webp","assets/images/gallery/vantage-work-09-power-substation-engineers.webp","assets/images/gallery/vantage-work-10-airports-runway-blue-hour.webp","assets/images/sectors/fit-outs/fit-outs-banking-hall.webp","assets/images/gallery/vantage-work-11-buildings-foundation-concrete-pour.webp","assets/images/gallery/vantage-work-12-buildings-public-facility-golden-hour.webp","assets/images/sectors/mechanical/mechanical-ceiling-void-services.webp","assets/images/gallery/vantage-work-13-power-energy-triptych.webp"];
   lbStep(d) { this.setState(s => ({ lb: s.lb == null ? null : (s.lb + d + this.gallery.length) % this.gallery.length })); }
   statsRef = React.createRef();
   countUp() {
@@ -525,7 +525,7 @@ class Component extends DCLogic {
       ['Buildings', 'buildings'], ['Airports, Roads, Bridges & Infrastructures', 'airports-roads'], ['Power & Energy', 'power-energy'],
       ['Mechanical Works', 'mechanical'], ['Oil & Gas', 'oil-gas'], ['Recreational Facilities', 'recreational'], ['Engineering & Design', 'engineering-design'],
       ['Procurement & Supply', 'procurement'], ['Facility Management', 'facility-management'], ['Fit-Outs', 'fit-outs'], ['Entertainment & Development', 'entertainment'],
-    ].map(([name, icon], i) => ({ n: String(i + 1).padStart(2, '0'), name, icon: 'assets/images/sectors/vantage-sector-' + ({ 'airports-roads': 'airports-roads-bridges-infrastructure', 'power-energy': 'power-and-energy', 'mechanical': 'mechanical-works', 'oil-gas': 'oil-and-gas', 'recreational': 'recreational-facilities', 'engineering-design': 'engineering-and-design', 'procurement': 'procurement-and-supply', 'entertainment': 'entertainment-and-development' }[icon] || icon) + '-icon.webp', href: 'sector.html?s=' + icon }));
+    ].map(([name, icon], i) => ({ n: String(i + 1).padStart(2, '0'), name, icon: 'assets/images/sectors/vantage-sector-' + ({ 'airports-roads': 'airports-roads-bridges-infrastructure', 'power-energy': 'power-and-energy', 'mechanical': 'mechanical-works', 'oil-gas': 'oil-and-gas', 'recreational': 'recreational-facilities', 'engineering-design': 'engineering-and-design', 'procurement': 'procurement-and-supply', 'entertainment': 'entertainment-and-development' }[icon] || icon) + '-icon.webp', href: 'sector.html?s=' + icon, img: {"buildings":"assets/images/hero/vantage-buildings-commercial-construction-hero.webp","Schools and educational facilities":"Residential developments","airports-roads":"assets/images/gallery/vantage-work-01-roads-highway-interchange-aerial.webp","Highways and urban roads":"Bridges and culverts","power-energy":"assets/images/gallery/vantage-work-05-power-utility-solar-farm-aerial.webp","Utility-scale solar farms":"Substations and transmission","mechanical":"assets/images/sectors/mechanical/mechanical-hero-rooftop-hvac-chillers.webp","Plumbing and fire protection":"Industrial equipment installation","oil-gas":"assets/images/sectors/oil-gas/oil-gas-wellhead-inspection.webp","Storage and tank farms":"Industrial plant construction","recreational":"assets/images/sectors/recreational/recreational-hero-sports-complex-aerial.webp","engineering-design":"assets/images/gallery/vantage-work-11-buildings-foundation-concrete-pour.webp","Civil and structural design":"Project management and supervision","procurement":"assets/images/sectors/procurement/procurement-hero-materials-yard-forklift.webp","Logistics and delivery":"Plant and fleet supply","facility-management":"assets/images/sectors/facility-management/facility-management-hero-office-building-golden-hour.webp","Building operations":"Repairs and upgrades","fit-outs":"assets/images/sectors/fit-outs/fit-outs-hero-corporate-lobby.webp","Banking halls":"Finishes and joinery","entertainment":"assets/images/sectors/entertainment/entertainment-hero-arena-mixed-use-aerial.webp"}[icon] }));
     const mk = (prefix, hexes, steps, base) => hexes.map((hex, i) => ({ step: steps[i], hex, tag: steps[i] === base ? ' · base' : '', ring: steps[i] === base ? '2px solid #0D2B4F' : 'none' }));
     const st = [50, 100, 200, 300, 400, 500, 600, 700, 800, 900];
     const scales = [
@@ -535,7 +535,7 @@ class Component extends DCLogic {
     ];
     return {
       showUtility: this.props.showUtilityBar ?? true,
-      sectors, knownSectors: sectors.slice(0, 6),
+      sectors, knownSectors: sectors.slice(0, 6), homeSectors: sectors.slice(0, 5),
       isNarrow: narrow, isWide: !narrow,
       drawerOpen: narrow && this.state.menu === 'drawer',
       drawerSectors: !!this.state.drawerSectors, drawerSign: this.state.drawerSectors ? '−' : '+',
@@ -592,10 +592,10 @@ class Component extends DCLogic {
       cols: Array.from({ length: 12 }, (_, i) => i),
       ...(() => {
         const data = [
-          { slot: 'hero-roads', src: 'assets/images/hero/vantage-highway-road-construction-hero.webp', ph: 'Hero slide 1 · road construction', sector: 'Roads', headline: 'Road infrastructure that connects regions', lead: 'Engineering, procurement and construction of highways and rural access roads, delivered to federal and state standards.', project: '101km Malamma Rigan Gabas Road', place: 'Kano, Nigeria' },
-          { slot: 'hero-power', src: 'assets/images/hero/vantage-solar-mini-grid-power-energy-hero.webp', ph: 'Hero slide 2 · mini-grid / solar', sector: 'Power & Energy', headline: 'Reliable power for off-grid communities', lead: 'Design and delivery of solar mini-grids and energy storage that bring dependable electricity to underserved areas.', project: 'Lofa County Mini-grid 10MWh', place: 'Liberia' },
-          { slot: 'hero-buildings', src: 'assets/images/hero/vantage-school-building-construction-hero.webp', ph: 'Hero slide · buildings', sector: 'Buildings', headline: 'Buildings for learning, health and community', lead: 'Commercial, educational, healthcare and residential buildings delivered from design through handover.', project: 'Construction of International Community School (ICS)', place: 'Baghdad, Iraq' },
-          { slot: 'hero-air', src: 'assets/images/hero/vantage-airport-terminal-infrastructure-hero.webp', ph: 'Hero slide 3 · aviation facility', sector: 'Airports', headline: 'Aviation facilities for the next generation', lead: 'Full EPC delivery of airport and aviation infrastructure, from site works to commissioning.', project: 'Red Sea Air Taxi Facility', place: 'KSA' },
+          { slot: 'hero-roads', src: 'assets/images/hero/vantage-roads-highway-golden-hour-hero.webp', ph: 'Hero slide 1 · road construction', sector: 'Roads', headline: 'Road infrastructure that connects regions', lead: 'Engineering, procurement and construction of highways and rural access roads, delivered to federal and state standards.', project: '101km Malamma Rigan Gabas Road', place: 'Kano, Nigeria' },
+          { slot: 'hero-power', src: 'assets/images/hero/vantage-power-solar-farm-transmission-hero.webp', ph: 'Hero slide 2 · mini-grid / solar', sector: 'Power & Energy', headline: 'Reliable power for off-grid communities', lead: 'Design and delivery of solar mini-grids and energy storage that bring dependable electricity to underserved areas.', project: 'Lofa County Mini-grid 10MWh', place: 'Liberia' },
+          { slot: 'hero-buildings', src: 'assets/images/hero/vantage-buildings-commercial-construction-hero.webp', ph: 'Hero slide · buildings', sector: 'Buildings', headline: 'Buildings for learning, health and community', lead: 'Commercial, educational, healthcare and residential buildings delivered from design through handover.', project: 'Construction of International Community School (ICS)', place: 'Baghdad, Iraq' },
+          { slot: 'hero-air', src: 'assets/images/hero/vantage-airports-terminal-apron-twilight-hero.webp', ph: 'Hero slide 3 · aviation facility', sector: 'Airports', headline: 'Aviation facilities for the next generation', lead: 'Full EPC delivery of airport and aviation infrastructure, from site works to commissioning.', project: 'Red Sea Air Taxi Facility', place: 'KSA' },
         ];
         const cur = this.state.slide;
         return {

@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Our Sectors | Vantage Infrastructure and Energy Ltd</title>
+<meta name="description" content="Vantage Infrastructure and Energy Ltd (VIEL) is an Engineering, Procurement and Construction (EPC) firm delivering roads, bridges, airports, power and buildings across Africa and the Middle East. Head office: 4 Oguda Close, Maitama, Abuja.">
+<meta name="theme-color" content="#0D2B4F">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Vantage Infrastructure and Energy Ltd">
+<meta property="og:description" content="Engineering, Procurement and Construction across infrastructure and energy.">
+<meta property="og:image" content="assets/images/hero/vantage-buildings-commercial-construction-hero.webp">
+
+<script src="assets/js/support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+body{margin:0;background:#FFFFFF;color:#363E4C;font-family:Inter,system-ui,sans-serif;font-size:15px;line-height:24px;-webkit-font-smoothing:antialiased}
+*{box-sizing:border-box}
+a{color:#0D2B4F;text-decoration:none}
+a:hover{color:#557825}
+html{scroll-behavior:smooth}
+@keyframes viel-fill-a{from{width:0}to{width:100%}}
+@keyframes viel-fill-b{from{width:0}to{width:100%}}
+[data-rv]{opacity:0;transform:translateY(40px);transition:opacity .9s cubic-bezier(.2,.7,.2,1) var(--rv-d,0ms), transform .9s cubic-bezier(.2,.7,.2,1) var(--rv-d,0ms), border-color .15s, box-shadow .15s, background .15s !important}
+[data-rv="up"]{transform:translateY(-40px)}
+[data-rv="in"]{opacity:1;transform:none}
+@media (prefers-reduced-motion: reduce){[data-rv]{opacity:1 !important;transform:none !important;transition:none !important}}
+</style>
+<link rel="icon" type="image/png" href="assets/images/brand/vantage-infrastructure-energy-mark.webp">
+</helmet>
+
+<sc-if value="{{ showUtility }}" hint-placeholder-val="{{ true }}">
+<div style="position:relative;z-index:1;background:#081B33;color:#AEBFD8;font-size:12px;line-height:16px">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;height:36px;display:flex;align-items:center;justify-content:space-between;gap:16px">
+    <span>Head Office · 4 Oguda Close, Maitama, Abuja</span>
+    <a href="#" style="color:#B0D275;font-weight:500">Company Profile (PDF)</a>
+  </div>
+</div>
+</sc-if>
+
+<header style="position:sticky;top:0;z-index:50;background:#FFFFFF;border-bottom:1px solid #DCE1E8" onMouseLeave="{{ closeMenu }}">
+  <div style="max-width:1280px;margin:0 auto;padding:0 32px;height:72px;display:flex;align-items:center;gap:32px">
+    <a href="index.html" aria-label="Vantage Infrastructure and Energy Ltd — Home" style="display:flex;align-items:center;flex-shrink:0;height:72px;padding:14px 0">
+      <img src="assets/images/brand/vantage-infrastructure-energy-logo-horizontal.webp" alt="Vantage Infrastructure and Energy Ltd" style="height:44px;width:auto;display:block">
+    </a>
+    <sc-if value="{{ isNarrow }}" hint-placeholder-val="{{ false }}">
+    <button onClick="{{ toggleDrawer }}" aria-label="Menu" style="margin-left:auto;width:44px;height:44px;border:1px solid #DCE1E8;border-radius:4px;background:#FFFFFF;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:5px;cursor:pointer">
+      <span style="width:18px;height:2px;background:#0D2B4F"></span><span style="width:18px;height:2px;background:#0D2B4F"></span><span style="width:18px;height:2px;background:#0D2B4F"></span>
+    </button>
+    </sc-if>
+    <sc-if value="{{ isWide }}" hint-placeholder-val="{{ true }}">
+    <nav style="display:flex;align-items:center;gap:4px;margin-left:auto;white-space:nowrap">
+      <div style="position:relative" onMouseEnter="{{ openAbout }}">
+        <button style="height:40px;padding:0 16px;border:0;border-radius:4px;background:transparent;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:#0D2B4F;display:flex;align-items:center;gap:6px;cursor:pointer" style-hover="background:#F5F7FA">About <span style="font-size:9px;color:#98A2B3">▼</span></button>
+        <sc-if value="{{ isAbout }}" hint-placeholder-val="{{ false }}">
+        <div style="position:absolute;top:100%;left:0;margin-top:8px;width:240px;background:#FFFFFF;border:1px solid #DCE1E8;border-radius:8px;box-shadow:0 12px 32px -8px rgba(10,34,64,.16), 0 4px 8px rgba(10,34,64,.04);padding:8px;display:flex;flex-direction:column;gap:2px;z-index:60">
+          <a href="#" style="padding:10px 12px;border-radius:4px;font-weight:500;color:#0D2B4F" style-hover="background:#F5F7FA">About VIEL</a>
+          <a href="#" style="padding:10px 12px;border-radius:4px;font-weight:500;color:#0D2B4F" style-hover="background:#F5F7FA">Vision</a>
+          <a href="#" style="padding:10px 12px;border-radius:4px;font-weight:500;color:#0D2B4F" style-hover="background:#F5F7FA">Core Values</a>
+        </div>
+        </sc-if>
+      </div>
+      <button onMouseEnter="{{ openSectors }}" onClick="{{ toggleSectors }}" style="height:40px;padding:0 16px;border:0;border-radius:4px;background:transparent;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:#0D2B4F;display:flex;align-items:center;gap:6px;cursor:pointer" style-hover="background:#F5F7FA">What We Do <span style="font-size:9px;color:#98A2B3">▼</span></button>
+      <a href="#" onMouseEnter="{{ closeMenu }}" style="height:40px;padding:0 16px;border-radius:4px;display:flex;align-items:center;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:#0D2B4F" style-hover="background:#F5F7FA">Gallery</a>
+      <a href="#" onMouseEnter="{{ closeMenu }}" style="height:40px;padding:0 16px;border-radius:4px;display:flex;align-items:center;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:#0D2B4F" style-hover="background:#F5F7FA">Geographic Footprint</a>
+      <a href="#" onMouseEnter="{{ closeMenu }}" style="height:40px;padding:0 16px;border-radius:4px;display:flex;align-items:center;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:#0D2B4F" style-hover="background:#F5F7FA">Equipment</a>
+    </nav>
+    <a href="#" style="height:40px;padding:0 24px;border-radius:4px;display:flex;align-items:center;white-space:nowrap;background:#0D2B4F;color:#FFFFFF;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px" style-hover="background:#133A66;color:#FFFFFF">Contact us</a>
+    </sc-if>
+  </div>
+  <sc-if value="{{ drawerOpen }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;left:0;right:0;top:100%;background:#FFFFFF;border-bottom:1px solid #DCE1E8;box-shadow:0 24px 64px -16px rgba(10,34,64,.24);display:flex;flex-direction:column">
+    <a href="#" style="min-height:56px;padding:0 32px;display:flex;align-items:center;border-bottom:1px solid #EBEEF3;font-family:'Plus Jakarta Sans';font-weight:600;font-size:16px;color:#0D2B4F">About</a>
+    <button onClick="{{ toggleDrawerSectors }}" aria-expanded="{{ drawerSectors }}" style="min-height:56px;padding:0 32px;display:flex;align-items:center;justify-content:space-between;border:0;border-bottom:1px solid #EBEEF3;background:#FFFFFF;font-family:'Plus Jakarta Sans';font-weight:600;font-size:16px;color:#0D2B4F;cursor:pointer;text-align:left">What We Do <span style="font-size:18px;color:#557825">{{ drawerSign }}</span></button>
+    <sc-if value="{{ drawerSectors }}" hint-placeholder-val="{{ false }}">
+    <div style="background:#F5F7FA;border-bottom:1px solid #EBEEF3;padding:8px 0;max-height:50vh;overflow-y:auto">
+      <sc-for list="{{ sectors }}" as="s" hint-placeholder-count="11">
+        <a href="{{ s.href }}" style="min-height:48px;padding:0 32px 0 44px;display:flex;align-items:center;gap:14px;font-size:15px;line-height:20px;color:#363E4C" style-hover="background:#F4F9EC;color:#0D2B4F">
+          <img src="{{ s.icon }}" alt="" style="width:24px;height:24px;object-fit:contain;flex-shrink:0"><span>{{ s.name }}</span>
+        </a>
+      </sc-for>
+    </div>
+    </sc-if>
+    <a href="#" style="min-height:56px;padding:0 32px;display:flex;align-items:center;border-bottom:1px solid #EBEEF3;font-family:'Plus Jakarta Sans';font-weight:600;font-size:16px;color:#0D2B4F">Gallery</a>
+    <a href="#" style="min-height:56px;padding:0 32px;display:flex;align-items:center;border-bottom:1px solid #EBEEF3;font-family:'Plus Jakarta Sans';font-weight:600;font-size:16px;color:#0D2B4F">Geographic Footprint</a>
+    <a href="#" style="min-height:56px;padding:0 32px;display:flex;align-items:center;border-bottom:1px solid #EBEEF3;font-family:'Plus Jakarta Sans';font-weight:600;font-size:16px;color:#0D2B4F">Equipment</a>
+    <div style="padding:24px 32px"><a href="#" style="height:48px;display:flex;align-items:center;justify-content:center;background:#0D2B4F;color:#FFFFFF;border-radius:4px;font-family:'Plus Jakarta Sans';font-weight:600;font-size:15px">Contact us</a></div>
+  </div>
+  </sc-if>
+
+  <sc-if value="{{ isSectors }}" hint-placeholder-val="{{ false }}">
+  <div style="position:absolute;left:0;right:0;top:100%;background:#FFFFFF;border-bottom:1px solid #DCE1E8;box-shadow:0 24px 64px -16px rgba(10,34,64,.24)">
+    <div style="max-width:1280px;margin:0 auto;padding:40px 32px;display:grid;grid-template-columns:280px minmax(0,1fr);gap:48px">
+      <div style="border-right:1px solid #DCE1E8;padding-right:32px;display:flex;flex-direction:column;gap:8px">
+        <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#557825">What We Do</span>
+        <span style="font-family:'Plus Jakarta Sans';font-weight:700;font-size:24px;line-height:32px;color:#0D2B4F">11 sectors</span>
+        <a href="sectors.html" style="margin-top:16px;align-self:flex-start;height:40px;padding:0 16px;display:flex;white-space:nowrap;align-items:center;border:1px solid #0D2B4F;border-radius:4px;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:#0D2B4F" style-hover="background:#0D2B4F;color:#FFFFFF">All sectors →</a>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 24px">
+        <sc-for list="{{ sectors }}" as="s" hint-placeholder-count="11">
+          <a href="{{ s.href }}" style="display:flex;align-items:center;gap:14px;padding:10px 12px;border-radius:6px" style-hover="background:#F4F9EC">
+            <span style="width:40px;height:40px;flex-shrink:0;border-radius:6px;background:#F4F9EC;display:grid;place-items:center"><img src="{{ s.icon }}" alt="" style="width:26px;height:26px;object-fit:contain"></span>
+            <span style="font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;line-height:19px;color:#0D2B4F">{{ s.name }}</span>
+          </a>
+        </sc-for>
+      </div>
+    </div>
+  </div>
+  </sc-if>
+</header>
+
+<main>
+  <section data-screen-label="Sectors Intro" style="background:#0D2B4F">
+    <div style="max-width:1280px;margin:0 auto;padding:clamp(56px, 8vw, 96px) clamp(20px, 4vw, 32px);display:flex;flex-direction:column;gap:16px">
+      <a href="index.html" style="font-size:14px;color:#AEBFD8" style-hover="color:#FFFFFF">← Home</a>
+      <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#B0D275">What We Do</span>
+      <h1 style="margin:0;max-width:760px;font-family:'Plus Jakarta Sans';font-weight:800;font-size:clamp(36px, 6vw, 56px);line-height:1.1;letter-spacing:-0.02em;color:#FFFFFF;text-wrap:balance">11 sectors, one EPC partner</h1>
+    </div>
+  </section>
+  <section data-screen-label="All Sectors" style="max-width:1280px;margin:0 auto;padding:clamp(48px, 7vw, 96px) clamp(20px, 4vw, 32px)">
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,340px),1fr));gap:24px">
+      <sc-for list="{{ sectors }}" as="s" hint-placeholder-count="11">
+        <a href="{{ s.href }}" style="position:relative;isolation:isolate;min-height:340px;padding:28px;border-radius:12px;overflow:hidden;background:#0D2B4F;display:flex;flex-direction:column;justify-content:space-between;gap:24px;box-shadow:0 1px 2px rgba(10,34,64,.06);transition:box-shadow .3s, transform .3s" style-hover="box-shadow:0 24px 48px -16px rgba(13,43,79,.45);transform:translateY(-4px)">
+          <img src="{{ s.img }}" alt="" loading="lazy" style="position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;display:block;transition:transform .8s cubic-bezier(.2,.7,.2,1)" style-hover="transform:scale(1.08)">
+          <div style="position:absolute;inset:0;z-index:-1;pointer-events:none;background:linear-gradient(180deg, rgba(8,27,51,.25) 0%, rgba(8,27,51,.55) 45%, rgba(8,27,51,.94) 100%)"></div>
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;pointer-events:none">
+            <span style="width:56px;height:56px;border-radius:8px;background:rgba(255,255,255,.94);display:grid;place-items:center"><img src="{{ s.icon }}" alt="" style="width:34px;height:34px;object-fit:contain"></span>
+            <span style="font-family:'JetBrains Mono';font-size:12px;color:#D6DFEC">{{ s.n }}</span>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:12px;pointer-events:none">
+            <span style="font-family:'Plus Jakarta Sans';font-weight:700;font-size:22px;line-height:28px;color:#FFFFFF;text-wrap:balance">{{ s.name }}</span>
+            <span style="font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:#B0D275">Explore →</span>
+          </div>
+        </a>
+      </sc-for>
+    </div>
+  </section>
+</main>
+
+<footer style="background:#0D2B4F;color:#AEBFD8;border-top:4px solid #8AB83F">
+  <div style="max-width:1280px;margin:0 auto;padding:64px 32px 0;display:flex;justify-content:space-between;align-items:center;gap:32px;flex-wrap:wrap">
+    <img src="assets/images/brand/vantage-infrastructure-energy-logo-horizontal-white.webp" alt="Vantage Infrastructure and Energy Ltd" style="height:56px;width:auto;display:block">
+    <span style="max-width:420px;font-size:14px;line-height:22px;color:#AEBFD8">Engineering, procurement and construction across infrastructure and energy.</span>
+  </div>
+  <div style="max-width:1280px;margin:0 auto;padding:48px 32px 64px;display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,220px),1fr));gap:32px">
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9CC553">About</span>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a href="#" style="color:#D6DFEC" style-hover="color:#FFFFFF">About VIEL</a>
+        <a href="#" style="color:#D6DFEC" style-hover="color:#FFFFFF">Vision</a>
+        <a href="#" style="color:#D6DFEC" style-hover="color:#FFFFFF">Core Values</a>
+        <a href="#" style="color:#D6DFEC" style-hover="color:#FFFFFF">Equipment</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9CC553">Sectors</span>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <sc-for list="{{ knownSectors }}" as="s" hint-placeholder-count="5"><a href="{{ s.href }}" style="color:#D6DFEC" style-hover="color:#FFFFFF">{{ s.name }}</a></sc-for>
+        <a href="sectors.html" style="color:#B0D275;font-weight:500" style-hover="color:#CCE3A6">All 11 sectors →</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9CC553">Explore</span>
+      <div style="display:flex;flex-direction:column;gap:10px">
+        <a href="#" style="color:#D6DFEC" style-hover="color:#FFFFFF">Gallery</a>
+        <a href="#" style="color:#D6DFEC" style-hover="color:#FFFFFF">Geographic Footprint</a>
+      </div>
+    </div>
+    <div style="display:flex;flex-direction:column;gap:16px">
+      <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9CC553">Contact</span>
+      <address style="font-style:normal;color:#FFFFFF;line-height:24px">Head Office<br>4 Oguda Close, Maitama<br>Abuja, Nigeria</address>
+      <a href="#" style="align-self:flex-start;height:44px;padding:0 24px;display:flex;align-items:center;background:#8AB83F;color:#081B33;border-radius:4px;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px" style-hover="background:#9CC553;color:#081B33">Get in touch</a>
+    </div>
+  </div>
+  <div style="border-top:1px solid #1C5180">
+    <div style="max-width:1280px;margin:0 auto;padding:20px 32px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:12px;line-height:16px;color:#7F97BD">
+      <span>© 2026 Vantage Infrastructure and Energy Ltd</span>
+      <img src="assets/images/brand/vantage-infrastructure-energy-mark-white.webp" alt="" style="height:20px;width:auto;opacity:.8">
+    </div>
+  </div>
+</footer>
+</x-dc>
+<script type="text/x-dc" data-dc-script  data-props="{&quot;showUtilityBar&quot;:{&quot;editor&quot;:&quot;boolean&quot;,&quot;default&quot;:true,&quot;tsType&quot;:&quot;boolean&quot;}}">
+class Component extends DCLogic {
+  state = { menu: null, w: window.innerWidth, slug: new URLSearchParams(location.search).get('s') || 'buildings' };
+  componentDidMount() { this.onResize = () => this.setState({ w: window.innerWidth }); window.addEventListener('resize', this.onResize); }
+  componentWillUnmount() { window.removeEventListener('resize', this.onResize); }
+  renderVals() {
+    const narrow = this.state.w < 1100, P = 'assets/images/projects/vantage-project-';
+    const D = [
+      ['Buildings', 'buildings', 'buildings', 'assets/images/hero/vantage-buildings-commercial-construction-hero.webp', ['assets/images/gallery/vantage-work-03-buildings-high-rise-construction.webp', 'assets/images/gallery/vantage-work-11-buildings-foundation-concrete-pour.webp', 'assets/images/gallery/vantage-work-12-buildings-public-facility-golden-hour.webp'], 'Commercial, educational, healthcare and residential buildings delivered from design through handover.', 'Buildings for learning, work, health and living', ['Commercial and office buildings', 'Schools and educational facilities', 'Healthcare facilities', 'Residential developments', 'Structural and civil works']],
+      ['Airports, Roads, Bridges & Infrastructures', 'airports-roads', 'infrastructure', 'assets/images/gallery/vantage-work-01-roads-highway-interchange-aerial.webp', ['assets/images/gallery/vantage-work-10-airports-runway-blue-hour.webp', 'assets/images/gallery/vantage-work-04-bridges-girder-installation-river.webp', 'assets/images/gallery/vantage-work-08-roads-asphalt-paving.webp'], 'Full EPC delivery of airports, highways, rural access roads, bridges and supporting civil infrastructure.', 'Infrastructure that connects people and places', ['Airport and aviation facilities', 'Highways and urban roads', 'Rural access roads', 'Bridges and culverts', 'Drainage and earthworks']],
+      ['Power & Energy', 'power-energy', 'power', 'assets/images/gallery/vantage-work-05-power-utility-solar-farm-aerial.webp', ['assets/images/gallery/vantage-work-02-power-rural-solar-mini-grid.webp', 'assets/images/gallery/vantage-work-09-power-substation-engineers.webp', 'assets/images/gallery/vantage-work-13-power-energy-triptych.webp'], 'Design and delivery of solar mini-grids, utility-scale solar, substations and energy storage.', 'Dependable power, from mini-grids to utility scale', ['Solar mini-grids', 'Utility-scale solar farms', 'Hybrid power plants', 'Substations and transmission', 'Battery energy storage']],
+      ['Mechanical Works', 'mechanical', 'mechanical', 'assets/images/sectors/mechanical/mechanical-hero-rooftop-hvac-chillers.webp', ['assets/images/sectors/mechanical/mechanical-ceiling-void-services.webp', 'assets/images/sectors/mechanical/mechanical-pipe-flange-fitting.webp', 'assets/images/sectors/mechanical/mechanical-installation-levelling-detail.webp'], 'Installation of mechanical, electrical and plumbing systems for buildings and industrial facilities.', 'Systems that keep facilities running', ['HVAC systems', 'Plumbing and fire protection', 'Electrical installations', 'Industrial equipment installation']],
+      ['Oil & Gas', 'oil-gas', 'oil and gas', 'assets/images/sectors/oil-gas/oil-gas-hero-processing-facility-dusk.webp', ['assets/images/sectors/oil-gas/oil-gas-pipeline-welding.webp', 'assets/images/sectors/oil-gas/oil-gas-storage-tank-farm-aerial.webp', 'assets/images/sectors/oil-gas/oil-gas-wellhead-inspection.webp'], 'Civil, structural and mechanical works supporting oil and gas facilities.', 'Works for energy and industrial facilities', ['Facility civil works', 'Storage and tank farms', 'Pipeline support works', 'Industrial plant construction']],
+      ['Recreational Facilities', 'recreational', 'recreational', 'assets/images/sectors/recreational/recreational-hero-sports-complex-aerial.webp', ['assets/images/sectors/recreational/recreational-basketball-courts-dusk.webp', 'assets/images/sectors/recreational/recreational-public-park-pavilion.webp', 'assets/images/sectors/recreational/recreational-olympic-pool-construction.webp'], 'Parks, sports and leisure facilities built for communities.', 'Spaces for communities to gather', ['Sports facilities', 'Parks and landscaping', 'Community centres']],
+      ['Engineering & Design', 'engineering-design', 'engineering', 'assets/images/gallery/vantage-work-11-buildings-foundation-concrete-pour.webp', ['assets/images/gallery/vantage-work-03-buildings-high-rise-construction.webp', 'assets/images/gallery/vantage-work-01-roads-highway-interchange-aerial.webp', 'assets/images/gallery/vantage-work-07-water-dam-spillway-aerial.webp'], 'In-house engineering, surveying and design that take work from concept to construction.', 'From concept to construction drawings', ['Feasibility studies and surveys', 'Civil and structural design', 'MEP design', 'Project management and supervision']],
+      ['Procurement & Supply', 'procurement', 'procurement', 'assets/images/sectors/procurement/procurement-hero-materials-yard-forklift.webp', ['assets/images/sectors/procurement/procurement-warehouse-electrical-solar-stock.webp', 'assets/images/sectors/procurement/procurement-container-crane-unloading.webp', 'assets/images/sectors/procurement/procurement-officer-inspecting-delivery.webp'], 'Sourcing, logistics and supply of equipment and materials for construction and energy works.', 'The right equipment and materials, on time', ['Equipment and materials sourcing', 'Logistics and delivery', 'Vendor management', 'Plant and fleet supply']],
+      ['Facility Management', 'facility-management', 'facility management', 'assets/images/sectors/facility-management/facility-management-hero-office-building-golden-hour.webp', ['assets/images/sectors/facility-management/facility-management-rooftop-hvac-maintenance.webp', 'assets/images/sectors/facility-management/facility-management-plant-room-inspection.webp', 7], 'Operation and maintenance services that keep buildings and infrastructure performing.', 'Keeping assets performing after handover', ['Preventive maintenance', 'Building operations', 'Energy asset O&M', 'Repairs and upgrades']],
+      ['Fit-Outs', 'fit-outs', 'fit-out', 'assets/images/sectors/fit-outs/fit-outs-hero-corporate-lobby.webp', ['assets/images/sectors/fit-outs/fit-outs-office-ceiling-installation.webp', 'assets/images/sectors/fit-outs/fit-outs-banking-hall.webp', 'assets/images/sectors/fit-outs/fit-outs-timber-panel-detail.webp'], 'Interior fit-outs for banks, offices and commercial spaces.', 'Interiors finished to specification', ['Commercial interiors', 'Banking halls', 'Office fit-outs', 'Finishes and joinery']],
+      ['Entertainment & Development', 'entertainment', 'development', 'assets/images/sectors/entertainment/entertainment-hero-arena-mixed-use-aerial.webp', ['assets/images/sectors/entertainment/entertainment-cinema-retail-complex.webp', 'assets/images/sectors/entertainment/entertainment-event-hall-fit-out.webp', 'assets/images/sectors/entertainment/entertainment-hospitality-resort-courtyard.webp'], 'Development of entertainment, hospitality and mixed-use destinations.', 'Destinations built for people', ['Mixed-use developments', 'Hospitality venues', 'Event and entertainment spaces']],
+    ];
+    const sectors = D.map(([name, slug, short, hero, gal, lead, h2, caps], i) => ({ n: String(i + 1).padStart(2, '0'), name, slug, short, hero, gal, lead, h2, caps, icon: 'assets/images/sectors/vantage-sector-' + ({ 'airports-roads': 'airports-roads-bridges-infrastructure', 'power-energy': 'power-and-energy', 'mechanical': 'mechanical-works', 'oil-gas': 'oil-and-gas', 'recreational': 'recreational-facilities', 'engineering-design': 'engineering-and-design', 'procurement': 'procurement-and-supply', 'entertainment': 'entertainment-and-development' }[slug] || slug) + '-icon.webp', href: 'sector.html?s=' + slug, img: slug === 'oil-gas' ? 'assets/images/sectors/oil-gas/oil-gas-wellhead-inspection.webp' : hero }));
+    const ci = Math.max(0, sectors.findIndex(s => s.slug === this.state.slug)), cur = sectors[ci];
+    const files = ['01-aerial-estate-road-network','02-road-construction-equipment-yard','03-asphalt-road-paving-compactor','04-dual-carriageway-highway','05-commercial-bank-building-facade','06-industrial-grain-silos-facility','07-school-building-courtyard','08-glass-walkway-building-interior','09-bank-interior-fit-out','10-spiral-staircase-commercial-fit-out','11-high-rise-commercial-buildings','12-concrete-bridge-infrastructure','13-urban-road-drainage-construction','14-dam-water-infrastructure-aerial','15-utility-scale-solar-farm','16-building-construction-site-aerial','17-airport-terminal-aerial','18-solar-mini-grid-aerial','19-roundabout-road-construction-aerial','20-building-foundation-construction-site','21-rural-road-aerial-view','22-road-construction-equipment-fleet','23-urban-building-concrete-works-aerial','24-bridge-girder-installation-cranes','25-solar-wind-renewable-energy','26-hydropower-dam-site-clearing','27-solar-mini-grid-campus-aerial','28-electrical-substation-switchyard','29-solar-farm-aerial-top-view','30-solar-hybrid-power-plant-construction','31-power-transformer-substation','32-solar-hybrid-power-plant-aerial','33-drainage-channel-construction-aerial','34-industrial-processing-plant-aerial','35-urban-road-construction-aerial','36-community-solar-farm-aerial','37-utility-scale-solar-panel-rows','38-solar-farm-under-construction-aerial'];
+    if (typeof document !== 'undefined') document.title = 'Our Sectors · VIEL';
+    return {
+      showUtility: this.props.showUtilityBar ?? true,
+      sectors, knownSectors: sectors.slice(0, 6), cur,
+      heroSlot: 'sector-' + cur.slug + '-hero', heroPh: cur.name + ' · hero image',
+      caps: cur.caps.map((t, i) => ({ t, n: '0' + (i + 1) })),
+      gal: cur.gal.map((k, i) => ({ src: typeof k === 'string' ? k : P + files[k] + '.webp', slot: 'sector-' + cur.slug + '-g' + (i + 1), ph: cur.name + ' · photo ' + (i + 1) })),
+      prev: sectors[(ci + 10) % 11], next: sectors[(ci + 1) % 11],
+      isNarrow: narrow, isWide: !narrow,
+      drawerOpen: narrow && this.state.menu === 'drawer',
+      drawerSectors: !!this.state.drawerSectors, drawerSign: this.state.drawerSectors ? '−' : '+',
+      toggleDrawerSectors: () => this.setState(s => ({ drawerSectors: !s.drawerSectors })),
+      toggleDrawer: () => this.setState(s => ({ menu: s.menu === 'drawer' ? null : 'drawer' })),
+      isSectors: !narrow && this.state.menu === 'sectors',
+      isAbout: this.state.menu === 'about',
+      openSectors: () => this.setState({ menu: 'sectors' }),
+      openAbout: () => this.setState({ menu: 'about' }),
+      toggleSectors: () => this.setState(s => ({ menu: s.menu === 'sectors' ? null : 'sectors' })),
+      closeMenu: () => this.setState({ menu: null }),
+    };
+  }
+}
+</script>
+</body>
+</html>

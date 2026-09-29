@@ -9,7 +9,7 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Vantage Infrastructure and Energy Ltd">
 <meta property="og:description" content="Engineering, Procurement and Construction across infrastructure and energy.">
-<meta property="og:image" content="assets/images/hero/vantage-highway-road-construction-hero.webp">
+<meta property="og:image" content="assets/images/hero/vantage-roads-highway-golden-hour-hero.webp">
 
 <script src="assets/js/support.js"></script>
 </head>
@@ -31,7 +31,6 @@ html{scroll-behavior:smooth}
 [data-rv="in"]{opacity:1;transform:none}
 @media (prefers-reduced-motion: reduce){[data-rv]{opacity:1 !important;transform:none !important;transition:none !important}}
 </style>
-<script src="assets/js/image-slot.js"></script>
 <link rel="icon" type="image/png" href="assets/images/brand/vantage-infrastructure-energy-mark.webp">
 </helmet>
 
@@ -100,7 +99,7 @@ html{scroll-behavior:smooth}
       <div style="border-right:1px solid #DCE1E8;padding-right:32px;display:flex;flex-direction:column;gap:8px">
         <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#557825">What We Do</span>
         <span style="font-family:'Plus Jakarta Sans';font-weight:700;font-size:24px;line-height:32px;color:#0D2B4F">11 sectors</span>
-        <a href="index.html#sectors" style="margin-top:16px;align-self:flex-start;height:40px;padding:0 16px;display:flex;white-space:nowrap;align-items:center;border:1px solid #0D2B4F;border-radius:4px;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:#0D2B4F" style-hover="background:#0D2B4F;color:#FFFFFF">All sectors →</a>
+        <a href="sectors.html" style="margin-top:16px;align-self:flex-start;height:40px;padding:0 16px;display:flex;white-space:nowrap;align-items:center;border:1px solid #0D2B4F;border-radius:4px;font-family:'Plus Jakarta Sans';font-weight:600;font-size:14px;color:#0D2B4F" style-hover="background:#0D2B4F;color:#FFFFFF">All sectors →</a>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:4px 24px">
         <sc-for list="{{ sectors }}" as="s" hint-placeholder-count="11">
@@ -117,12 +116,12 @@ html{scroll-behavior:smooth}
 
 <main>
   <section data-screen-label="Sector Hero" style="position:relative;height:calc(100vh - 108px);min-height:560px;max-height:820px;background:#081B33;overflow:hidden">
-    <div style="position:absolute;inset:0"><image-slot id="{{ heroSlot }}" shape="rect" src="{{ cur.hero }}" placeholder="{{ heroPh }}"></image-slot></div>
+    <div style="position:absolute;inset:0"><img src="{{ cur.hero }}" alt="{{ heroPh }}" fetchpriority="high" style="width:100%;height:100%;object-fit:cover;display:block"></div>
     <div style="position:absolute;inset:0;pointer-events:none;background:linear-gradient(90deg, rgba(8,27,51,.9) 0%, rgba(8,27,51,.6) 50%, rgba(8,27,51,.2) 100%)"></div>
     <div style="position:relative;max-width:1280px;height:100%;margin:0 auto;padding:clamp(28px, 5vw, 48px) clamp(20px, 4vw, 32px) clamp(56px, 8vw, 96px);display:flex;flex-direction:column;justify-content:space-between;gap:32px;pointer-events:none">
       <nav aria-label="Breadcrumb" style="display:flex;align-items:center;gap:10px;font-size:13px;color:#AEBFD8;pointer-events:auto">
         <a href="index.html" style="color:#D6DFEC" style-hover="color:#FFFFFF">Home</a><span>/</span>
-        <a href="index.html#sectors" style="color:#D6DFEC" style-hover="color:#FFFFFF">What We Do</a><span>/</span>
+        <a href="sectors.html" style="color:#D6DFEC" style-hover="color:#FFFFFF">What We Do</a><span>/</span>
         <span style="color:#B0D275">{{ cur.name }}</span>
       </nav>
       <div style="display:flex;flex-direction:column;gap:24px;max-width:780px">
@@ -153,7 +152,7 @@ html{scroll-behavior:smooth}
     <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:24px">
       <sc-for list="{{ gal }}" as="g" hint-placeholder-count="3">
         <div style="position:relative;aspect-ratio:4/3;border-radius:8px;overflow:hidden;background:#EBEEF3">
-          <image-slot id="{{ g.slot }}" shape="rect" src="{{ g.src }}" placeholder="{{ g.ph }}"></image-slot>
+          <img src="{{ g.src }}" alt="{{ g.ph }}" loading="lazy" style="width:100%;height:100%;object-fit:cover;display:block">
         </div>
       </sc-for>
     </div>
@@ -205,7 +204,7 @@ html{scroll-behavior:smooth}
       <span style="font-size:12px;line-height:16px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;color:#9CC553">Sectors</span>
       <div style="display:flex;flex-direction:column;gap:10px">
         <sc-for list="{{ knownSectors }}" as="s" hint-placeholder-count="5"><a href="{{ s.href }}" style="color:#D6DFEC" style-hover="color:#FFFFFF">{{ s.name }}</a></sc-for>
-        <a href="index.html#sectors" style="color:#B0D275;font-weight:500" style-hover="color:#CCE3A6">All 11 sectors →</a>
+        <a href="sectors.html" style="color:#B0D275;font-weight:500" style-hover="color:#CCE3A6">All 11 sectors →</a>
       </div>
     </div>
     <div style="display:flex;flex-direction:column;gap:16px">
@@ -237,16 +236,16 @@ class Component extends DCLogic {
   renderVals() {
     const narrow = this.state.w < 1100, P = 'assets/images/projects/vantage-project-';
     const D = [
-      ['Buildings', 'buildings', 'buildings', 'assets/images/hero/vantage-school-building-construction-hero.webp', [10, 4, 19], 'Commercial, educational, healthcare and residential buildings delivered from design through handover.', 'Buildings for learning, work, health and living', ['Commercial and office buildings', 'Schools and educational facilities', 'Healthcare facilities', 'Residential developments', 'Structural and civil works']],
-      ['Airports, Roads, Bridges & Infrastructures', 'airports-roads', 'infrastructure', P + '17-airport-terminal-aerial.webp', [3, 23, 34], 'Full EPC delivery of airports, highways, rural access roads, bridges and supporting civil infrastructure.', 'Infrastructure that connects people and places', ['Airport and aviation facilities', 'Highways and urban roads', 'Rural access roads', 'Bridges and culverts', 'Drainage and earthworks']],
-      ['Power & Energy', 'power-energy', 'power', P + '32-solar-hybrid-power-plant-aerial.webp', [27, 36, 30], 'Design and delivery of solar mini-grids, utility-scale solar, substations and energy storage.', 'Dependable power, from mini-grids to utility scale', ['Solar mini-grids', 'Utility-scale solar farms', 'Hybrid power plants', 'Substations and transmission', 'Battery energy storage']],
-      ['Mechanical Works', 'mechanical', 'mechanical', P + '22-road-construction-equipment-fleet.webp', [29, 30, 1], 'Installation of mechanical, electrical and plumbing systems for buildings and industrial facilities.', 'Systems that keep facilities running', ['HVAC systems', 'Plumbing and fire protection', 'Electrical installations', 'Industrial equipment installation']],
-      ['Oil & Gas', 'oil-gas', 'oil and gas', P + '34-industrial-processing-plant-aerial.webp', [5, 27, 13], 'Civil, structural and mechanical works supporting oil and gas facilities.', 'Works for energy and industrial facilities', ['Facility civil works', 'Storage and tank farms', 'Pipeline support works', 'Industrial plant construction']],
+      ['Buildings', 'buildings', 'buildings', 'assets/images/hero/vantage-buildings-commercial-construction-hero.webp', ['assets/images/gallery/vantage-work-03-buildings-high-rise-construction.webp', 'assets/images/gallery/vantage-work-11-buildings-foundation-concrete-pour.webp', 'assets/images/gallery/vantage-work-12-buildings-public-facility-golden-hour.webp'], 'Commercial, educational, healthcare and residential buildings delivered from design through handover.', 'Buildings for learning, work, health and living', ['Commercial and office buildings', 'Schools and educational facilities', 'Healthcare facilities', 'Residential developments', 'Structural and civil works']],
+      ['Airports, Roads, Bridges & Infrastructures', 'airports-roads', 'infrastructure', 'assets/images/gallery/vantage-work-01-roads-highway-interchange-aerial.webp', ['assets/images/gallery/vantage-work-10-airports-runway-blue-hour.webp', 'assets/images/gallery/vantage-work-04-bridges-girder-installation-river.webp', 'assets/images/gallery/vantage-work-08-roads-asphalt-paving.webp'], 'Full EPC delivery of airports, highways, rural access roads, bridges and supporting civil infrastructure.', 'Infrastructure that connects people and places', ['Airport and aviation facilities', 'Highways and urban roads', 'Rural access roads', 'Bridges and culverts', 'Drainage and earthworks']],
+      ['Power & Energy', 'power-energy', 'power', 'assets/images/gallery/vantage-work-05-power-utility-solar-farm-aerial.webp', ['assets/images/gallery/vantage-work-02-power-rural-solar-mini-grid.webp', 'assets/images/gallery/vantage-work-09-power-substation-engineers.webp', 'assets/images/gallery/vantage-work-13-power-energy-triptych.webp'], 'Design and delivery of solar mini-grids, utility-scale solar, substations and energy storage.', 'Dependable power, from mini-grids to utility scale', ['Solar mini-grids', 'Utility-scale solar farms', 'Hybrid power plants', 'Substations and transmission', 'Battery energy storage']],
+      ['Mechanical Works', 'mechanical', 'mechanical', 'assets/images/sectors/mechanical/mechanical-hero-rooftop-hvac-chillers.webp', ['assets/images/sectors/mechanical/mechanical-ceiling-void-services.webp', 'assets/images/sectors/mechanical/mechanical-pipe-flange-fitting.webp', 'assets/images/sectors/mechanical/mechanical-installation-levelling-detail.webp'], 'Installation of mechanical, electrical and plumbing systems for buildings and industrial facilities.', 'Systems that keep facilities running', ['HVAC systems', 'Plumbing and fire protection', 'Electrical installations', 'Industrial equipment installation']],
+      ['Oil & Gas', 'oil-gas', 'oil and gas', 'assets/images/sectors/oil-gas/oil-gas-hero-processing-facility-dusk.webp', ['assets/images/sectors/oil-gas/oil-gas-pipeline-welding.webp', 'assets/images/sectors/oil-gas/oil-gas-storage-tank-farm-aerial.webp', 'assets/images/sectors/oil-gas/oil-gas-wellhead-inspection.webp'], 'Civil, structural and mechanical works supporting oil and gas facilities.', 'Works for energy and industrial facilities', ['Facility civil works', 'Storage and tank farms', 'Pipeline support works', 'Industrial plant construction']],
       ['Recreational Facilities', 'recreational', 'recreational', 'assets/images/sectors/recreational/recreational-hero-sports-complex-aerial.webp', ['assets/images/sectors/recreational/recreational-basketball-courts-dusk.webp', 'assets/images/sectors/recreational/recreational-public-park-pavilion.webp', 'assets/images/sectors/recreational/recreational-olympic-pool-construction.webp'], 'Parks, sports and leisure facilities built for communities.', 'Spaces for communities to gather', ['Sports facilities', 'Parks and landscaping', 'Community centres']],
-      ['Engineering & Design', 'engineering-design', 'engineering', P + '16-building-construction-site-aerial.webp', [19, 22, 32], 'In-house engineering, surveying and design that take work from concept to construction.', 'From concept to construction drawings', ['Feasibility studies and surveys', 'Civil and structural design', 'MEP design', 'Project management and supervision']],
+      ['Engineering & Design', 'engineering-design', 'engineering', 'assets/images/gallery/vantage-work-11-buildings-foundation-concrete-pour.webp', ['assets/images/gallery/vantage-work-03-buildings-high-rise-construction.webp', 'assets/images/gallery/vantage-work-01-roads-highway-interchange-aerial.webp', 'assets/images/gallery/vantage-work-07-water-dam-spillway-aerial.webp'], 'In-house engineering, surveying and design that take work from concept to construction.', 'From concept to construction drawings', ['Feasibility studies and surveys', 'Civil and structural design', 'MEP design', 'Project management and supervision']],
       ['Procurement & Supply', 'procurement', 'procurement', 'assets/images/sectors/procurement/procurement-hero-materials-yard-forklift.webp', ['assets/images/sectors/procurement/procurement-warehouse-electrical-solar-stock.webp', 'assets/images/sectors/procurement/procurement-container-crane-unloading.webp', 'assets/images/sectors/procurement/procurement-officer-inspecting-delivery.webp'], 'Sourcing, logistics and supply of equipment and materials for construction and energy works.', 'The right equipment and materials, on time', ['Equipment and materials sourcing', 'Logistics and delivery', 'Vendor management', 'Plant and fleet supply']],
       ['Facility Management', 'facility-management', 'facility management', 'assets/images/sectors/facility-management/facility-management-hero-office-building-golden-hour.webp', ['assets/images/sectors/facility-management/facility-management-rooftop-hvac-maintenance.webp', 'assets/images/sectors/facility-management/facility-management-plant-room-inspection.webp', 7], 'Operation and maintenance services that keep buildings and infrastructure performing.', 'Keeping assets performing after handover', ['Preventive maintenance', 'Building operations', 'Energy asset O&M', 'Repairs and upgrades']],
-      ['Fit-Outs', 'fit-outs', 'fit-out', P + '10-spiral-staircase-commercial-fit-out.webp', [8, 7, 4], 'Interior fit-outs for banks, offices and commercial spaces.', 'Interiors finished to specification', ['Commercial interiors', 'Banking halls', 'Office fit-outs', 'Finishes and joinery']],
+      ['Fit-Outs', 'fit-outs', 'fit-out', 'assets/images/sectors/fit-outs/fit-outs-hero-corporate-lobby.webp', ['assets/images/sectors/fit-outs/fit-outs-office-ceiling-installation.webp', 'assets/images/sectors/fit-outs/fit-outs-banking-hall.webp', 'assets/images/sectors/fit-outs/fit-outs-timber-panel-detail.webp'], 'Interior fit-outs for banks, offices and commercial spaces.', 'Interiors finished to specification', ['Commercial interiors', 'Banking halls', 'Office fit-outs', 'Finishes and joinery']],
       ['Entertainment & Development', 'entertainment', 'development', 'assets/images/sectors/entertainment/entertainment-hero-arena-mixed-use-aerial.webp', ['assets/images/sectors/entertainment/entertainment-cinema-retail-complex.webp', 'assets/images/sectors/entertainment/entertainment-event-hall-fit-out.webp', 'assets/images/sectors/entertainment/entertainment-hospitality-resort-courtyard.webp'], 'Development of entertainment, hospitality and mixed-use destinations.', 'Destinations built for people', ['Mixed-use developments', 'Hospitality venues', 'Event and entertainment spaces']],
     ];
     const sectors = D.map(([name, slug, short, hero, gal, lead, h2, caps], i) => ({ n: String(i + 1).padStart(2, '0'), name, slug, short, hero, gal, lead, h2, caps, icon: 'assets/images/sectors/vantage-sector-' + ({ 'airports-roads': 'airports-roads-bridges-infrastructure', 'power-energy': 'power-and-energy', 'mechanical': 'mechanical-works', 'oil-gas': 'oil-and-gas', 'recreational': 'recreational-facilities', 'engineering-design': 'engineering-and-design', 'procurement': 'procurement-and-supply', 'entertainment': 'entertainment-and-development' }[slug] || slug) + '-icon.webp', href: 'sector.html?s=' + slug }));
